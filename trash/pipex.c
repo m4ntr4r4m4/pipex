@@ -6,41 +6,62 @@
 /*   By: ahammoud <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/07 13:26:05 by ahammoud          #+#    #+#             */
-/*   Updated: 2022/03/07 17:53:31 by ahammoud         ###   ########.fr       */
+/*   Updated: 2022/03/09 14:58:37 by ahammoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
 
-int main (int argc, char **argv)
+char **path_var(char **envp)
 {
-	char	*envp[] = {"./", NULL};
-	char	**program;
-	char	**flags;
-	char	*flags1[]= {"-la"};
+	int	i;
+	char	**pathvar;
+
+	i = 0;
+	while (envp[i] && ft_strncmp(envp[i], "PATH", 4))
+		i++;
+	printf("envp path: %s\n", envp[i]);
+	envp[i] = ft_strtrim(envp[i], "PATH=");
+	pathvar = ft_split(envp[i], ':');
+	i = 0;
+	while (pathvar[i])
+	{
+		pathvar[i] = ft_strjoin(pathvar[i], "/");
+		i++;
+	}
+	return (pathvar);
+}
+
+char	*check_bin(char *binary, char *bin)
+{
+	int		x;
+
+	x = access(ft_strjoin(bin, binary), X_OK);
+	if (x == 0)
+		return (ft_strjoin(bin, binary));
+	return (NULL);
+}
+
+int main (int argc, char **argv, char **envp)
+{
+	t_pip	vars;
+	int		fd[2];
 	int		i = 0;
 
-	if (argc)
+	if (argc == 5)
 	{
-
-		program = ft_split(argv[2], ' ');
-		while(program[i])
-			i++;
-		flags = malloc(sizeof(char **) * (i));
-		i = 0;
-		while(program[i + 1] != 0)
+		vars.pathvar = path_var(envp);
+		vars.program = ft_split(argv[2], ' ');
+		while (vars.pathvar[i])
 		{
-			flags[i] = program[i + 1];
-			i++;
+			vars.path = check_bin(vars.program[0], vars.pathvar[i++]);
+			if (vars.path)
+				break;
 		}
-//		flags[i] = argv[1];
-		flags[i] = NULL;
-//		printf("this is li: %d\n", i);
+		if(!vars.path)
+			printf("error: bin not found\n");
 		i = 0;
-		while (flags[i] != NULL)
-			printf("this is flags: %s\n", flags[i++]);
-		//execve(program[0], flags , envp);
-		execve("/bin/ls", flags1 , envp);
+		execve(vars.path, vars.program , envp);
 	}
 	return (0);
 }
