@@ -1,6 +1,8 @@
 # pipex
 42 Pipex project
 
+In Progress
+this is a trash repo
 
 I - check if files and programs exist.
 
