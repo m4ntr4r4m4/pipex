@@ -6,7 +6,7 @@
 /*   By: ahammoud <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/07 13:26:05 by ahammoud          #+#    #+#             */
-/*   Updated: 2022/03/11 14:38:17 by ahammoud         ###   ########.fr       */
+/*   Updated: 2022/03/11 15:08:58 by ahammoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ int main (int argc, char **argv, char **envp)
 		if (pid2 == 0)
 		{
 			printf("PID2evolinmai\n");
-			fdout = open("./outfile", O_WRONLY);
+			fdout = open(argv[4], O_WRONLY | O_TRUNC);
 
 			dup2(fdout, 1);
 			dup2(vars.fd[0], 0);
