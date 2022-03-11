@@ -1,1 +1,13 @@
-      13
+total 88$
+drwxr-xr-x  12 ahammoud  2019    408 11 mar 18:20 .$
+drwxr-xr-x   7 ahammoud  2019    238 11 mar 16:07 ..$
+-rw-r--r--@  1 ahammoud  2019   6148 11 mar 16:07 .DS_Store$
+-rw-r--r--   1 ahammoud  2019      0  7 mar 16:08 1$
+-rw-r--r--   1 ahammoud  2019   1347 11 mar 16:04 Makefile$
+-rw-r--r--   1 ahammoud  2019      0 11 mar 16:10 file2.$
+drwxr-xr-x   4 ahammoud  2019    136 11 mar 18:09 includes$
+-rw-r--r--   1 ahammoud  2019     16  7 mar 13:24 infile$
+-rw-r--r--   1 ahammoud  2019      0 11 mar 18:21 outfile$
+-rwxr-xr-x   1 ahammoud  2019  16640 11 mar 18:20 pipex$
+-rw-r--r--   1 ahammoud  2019   5296 11 mar 16:01 pipex.o$
+drwxr-xr-x   9 ahammoud  2019    306 11 mar 18:20 source$

@@ -6,7 +6,7 @@
 /*   By: ahammoud <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/07 13:08:11 by ahammoud          #+#    #+#             */
-/*   Updated: 2022/03/11 14:35:53 by ahammoud         ###   ########.fr       */
+/*   Updated: 2022/03/11 18:06:57 by ahammoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,8 @@
 # include <sys/wait.h>
 # include "libft.h"
 # include <errno.h>
-#include <stdio.h>
+# include <stdio.h>
+# include <string.h>
 
 typedef struct s_pip {
 	char	**program;
@@ -30,6 +31,8 @@ typedef struct s_pip {
 	char	*path;
 	char	*path2;
 	int		fd[2];
+	int		fdin;
+	int		fdout;
 }	t_pip;
 char	*check_bin(char *binary, char *bin, int ac);
 char	**path_var(char **envp);

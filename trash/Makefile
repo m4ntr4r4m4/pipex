@@ -6,11 +6,11 @@
 #    By: ahammoud <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/07 13:14:42 by ahammoud          #+#    #+#              #
-#    Updated: 2022/03/11 14:38:52 by ahammoud         ###   ########.fr        #
+#    Updated: 2022/03/11 16:04:44 by ahammoud         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-SRCS	=	./pipex.c ./source/utils.c
+SRCS	=	./source/pipex.c ./source/utils.c
 
 OBJS	=	${SRCS:.c=.o}
 

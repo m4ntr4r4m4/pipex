@@ -6,15 +6,15 @@
 /*   By: ahammoud <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/11 14:36:36 by ahammoud          #+#    #+#             */
-/*   Updated: 2022/03/11 14:38:20 by ahammoud         ###   ########.fr       */
+/*   Updated: 2022/03/11 18:10:30 by ahammoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
 
-char **path_var(char **envp)
+char	**path_var(char **envp)
 {
-	int	i;
+	int		i;
 	char	**pathvar;
 
 	i = 0;
