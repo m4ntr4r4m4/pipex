@@ -6,41 +6,11 @@
 /*   By: ahammoud <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/07 13:26:05 by ahammoud          #+#    #+#             */
-/*   Updated: 2022/03/11 14:23:15 by ahammoud         ###   ########.fr       */
+/*   Updated: 2022/03/11 14:38:17 by ahammoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
-
-char **path_var(char **envp)
-{
-	int	i;
-	char	**pathvar;
-
-	i = 0;
-	while (envp[i] && ft_strncmp(envp[i], "PATH", 4))
-		i++;
-//	printf("envp path: %s\n", envp[i]);
-	envp[i] = ft_strtrim(envp[i], "PATH=");
-	pathvar = ft_split(envp[i], ':');
-	i = 0;
-	while (pathvar[i])
-	{
-		pathvar[i] = ft_strjoin(pathvar[i], "/");
-		i++;
-	}
-	return (pathvar);
-}
-
-char	*check_bin(char *binary, char *bin)
-{
-	int		x;
-
-	x = access(ft_strjoin(bin, binary), X_OK);
-	if (x == 0)
-		return (ft_strjoin(bin, binary));
-	return (NULL);
-}
 
 int main (int argc, char **argv, char **envp)
 {
@@ -72,7 +42,7 @@ int main (int argc, char **argv, char **envp)
 			while (vars.pathvar[i])
 			{
 		//		printf("this is pathvar pid1 %s\n", vars.pathvar[i]);
-				vars.path = check_bin(vars.program[0], vars.pathvar[i++]);
+				vars.path = check_bin(vars.program[0], vars.pathvar[i++], 3);
 				if (vars.path)
 					break;
 			}
@@ -96,7 +66,7 @@ int main (int argc, char **argv, char **envp)
 			while (vars.pathvar[i])
 			{
 //				printf("this is pathvar pid2 %s\n", vars.pathvar[i]);
-				vars.path2 = check_bin(vars.program2[0], vars.pathvar[i++]);
+				vars.path2 = check_bin(vars.program2[0], vars.pathvar[i++], 3);
 				if (vars.path2)
 					break;
 			}

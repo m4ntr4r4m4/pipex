@@ -6,7 +6,7 @@
 /*   By: ahammoud <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/07 13:08:11 by ahammoud          #+#    #+#             */
-/*   Updated: 2022/03/11 14:06:20 by ahammoud         ###   ########.fr       */
+/*   Updated: 2022/03/11 14:35:53 by ahammoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,5 +31,6 @@ typedef struct s_pip {
 	char	*path2;
 	int		fd[2];
 }	t_pip;
-
+char	*check_bin(char *binary, char *bin, int ac);
+char	**path_var(char **envp);
 #endif
