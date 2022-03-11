@@ -6,7 +6,7 @@
 /*   By: ahammoud <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/07 13:26:05 by ahammoud          #+#    #+#             */
-/*   Updated: 2022/03/11 18:21:34 by ahammoud         ###   ########.fr       */
+/*   Updated: 2022/03/11 18:58:28 by ahammoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,12 +84,18 @@ void	child2(t_pip vars, char **argv, char **envp)
 	execve(vars.path2, vars.program2, envp);
 }
 
+void	leaks()
+{
+	system("leaks pipex");
+}
+
 int	main(int argc, char **argv, char **envp)
 {
 	t_pip	vars;
 	int		pid1;
 	int		pid2;
 
+	atexit(leaks);
 	if (argc == 5)
 	{
 		if (pipe(vars.fd) < 0)
@@ -105,6 +111,7 @@ int	main(int argc, char **argv, char **envp)
 		close(vars.fd[1]);
 		waitpid(pid1, NULL, 0);
 		waitpid(pid2, NULL, 0);
+		freevars(&vars);
 	}
 	return (0);
 }
