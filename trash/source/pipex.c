@@ -6,7 +6,7 @@
 /*   By: ahammoud <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/07 13:26:05 by ahammoud          #+#    #+#             */
-/*   Updated: 2022/03/13 17:16:45 by ahammoud         ###   ########.fr       */
+/*   Updated: 2022/03/13 18:05:14 by ahammoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,8 +60,10 @@ void	dupfd2(t_pip vars)
 void	child2(t_pip vars, char **argv, char **envp)
 {
 	int	i;
+	int	x;
 
 	i = 0;
+	x = 0;
 	vars.fdout = open(argv[4], O_WRONLY | O_TRUNC);
 	if (vars.fdout < 0)
 	{
@@ -76,12 +78,11 @@ void	child2(t_pip vars, char **argv, char **envp)
 		if (vars.path2)
 			break ;
 	}
-	if (!vars.path2)
+	if (execve(vars.path2, vars.program2, envp) < 0)
 	{
 		perror("command");
 		exit(0);
 	}
-	execve(vars.path2, vars.program2, envp);
 }
 
 int	main(int argc, char **argv, char **envp)
@@ -107,5 +108,7 @@ int	main(int argc, char **argv, char **envp)
 		waitpid(pid2, NULL, 0);
 		freevars(&vars);
 	}
+	else
+		ft_putstr_fd("example: ./pipex file1 cmd1 cmd2 file2\n", 1);
 	return (0);
 }
