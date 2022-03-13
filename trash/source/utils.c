@@ -6,7 +6,7 @@
 /*   By: ahammoud <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/11 14:36:36 by ahammoud          #+#    #+#             */
-/*   Updated: 2022/03/11 18:56:01 by ahammoud         ###   ########.fr       */
+/*   Updated: 2022/03/13 17:17:13 by ahammoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ char	**path_var(char **envp)
 {
 	int		i;
 	char	**pathvar;
+	char	*str;
 
 	i = 0;
 	while (envp[i] && ft_strncmp(envp[i], "PATH", 4))
@@ -25,7 +26,9 @@ char	**path_var(char **envp)
 	i = 0;
 	while (pathvar[i])
 	{
-		pathvar[i] = ft_strjoin(pathvar[i], "/");
+		str = ft_strjoin(pathvar[i], "/");
+		free(pathvar[i]);
+		pathvar[i] = str;
 		i++;
 	}
 	return (pathvar);
@@ -45,9 +48,10 @@ char	*check_bin(char *binary, char *bin, int ac)
 		return (ft_strjoin(bin, binary));
 	return (NULL);
 }
+
 void	freevars(t_pip *vars)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (vars->pathvar[i])
