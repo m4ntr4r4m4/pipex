@@ -6,7 +6,7 @@
 /*   By: ahammoud <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/07 13:26:05 by ahammoud          #+#    #+#             */
-/*   Updated: 2022/03/13 18:05:14 by ahammoud         ###   ########.fr       */
+/*   Updated: 2022/03/13 18:13:53 by ahammoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ void	child2(t_pip vars, char **argv, char **envp)
 
 	i = 0;
 	x = 0;
-	vars.fdout = open(argv[4], O_WRONLY | O_TRUNC);
+	vars.fdout = open(argv[4], O_RDWR | O_TRUNC | O_CREAT, 0666);
 	if (vars.fdout < 0)
 	{
 		perror("error");
