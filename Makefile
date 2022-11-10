@@ -6,7 +6,7 @@
 #    By: ahammoud <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/07 13:14:42 by ahammoud          #+#    #+#              #
-#    Updated: 2022/03/11 16:04:44 by ahammoud         ###   ########.fr        #
+#    Updated: 2022/11/10 20:57:34 by ahammoud         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,7 @@ OBJS	=	${SRCS:.c=.o}
 
 NAME	=	 pipex
 
-CFLAGS	=	-Wall -Werror -Wextra -g 
+CFLAGS	=	-Wall -Werror -Wextra -g -fsanitize=address
 
 
 CC	=	gcc
@@ -27,7 +27,7 @@ CC	=	gcc
 
 ${NAME}	:	${OBJS} 
 			cd ./source/libft/ && make
-			${CC}  ${OBJS} ./source/libft/libft.a -o ${NAME}
+			${CC} ${CFLAGS} ${OBJS} ./source/libft/libft.a -o ${NAME}
 
 all	:	${NAME}
 

@@ -6,7 +6,7 @@
 /*   By: ahammoud <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/07 13:08:11 by ahammoud          #+#    #+#             */
-/*   Updated: 2022/03/11 18:28:04 by ahammoud         ###   ########.fr       */
+/*   Updated: 2022/11/10 18:05:18 by ahammoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,15 +25,26 @@
 # include <string.h>
 
 typedef struct s_pip {
-	char	**program;
-	char	**program2;
-	char	**pathvar;
-	char	*path;
-	char	*path2;
 	int		fd[2];
 	int		fdin;
 	int		fdout;
 }	t_pip;
+
+typedef struct s_cmd {
+	char	*name;
+	char	**args;
+	char	*path;
+}	t_cmd;
+
+typedef struct s_all {
+	char	**pathvar;
+	char	*infile;
+	char	*outfile;
+	t_cmd	*cmd;
+	size_t	size;
+	t_pip	*pipes;
+}	t_all;
+
 char	*check_bin(char *binary, char *bin, int ac);
 char	**path_var(char **envp);
 void	freevars(t_pip *vars);

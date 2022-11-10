@@ -6,7 +6,7 @@
 /*   By: ahammoud <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/11 14:36:36 by ahammoud          #+#    #+#             */
-/*   Updated: 2022/03/13 17:17:13 by ahammoud         ###   ########.fr       */
+/*   Updated: 2022/11/10 18:07:38 by ahammoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,12 +49,12 @@ char	*check_bin(char *binary, char *bin, int ac)
 	return (NULL);
 }
 
-void	freevars(t_pip *vars)
-{
-	int	i;
-
-	i = 0;
-	while (vars->pathvar[i])
-		free(vars->pathvar[i++]);
-	free(vars->pathvar);
-}
+//void	freevars(t_pip *vars)
+//{
+//	int	i;
+//
+//	i = 0;
+//	while (vars->pathvar[i])
+//		free(vars->pathvar[i++]);
+//	free(vars->pathvar);
+//}
