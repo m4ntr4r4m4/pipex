@@ -6,11 +6,11 @@
 #    By: ahammoud <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/07 13:14:42 by ahammoud          #+#    #+#              #
-#    Updated: 2022/11/10 20:57:34 by ahammoud         ###   ########.fr        #
+#    Updated: 2022/11/14 16:58:05 by ahammoud         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-SRCS	=	./source/pipex.c ./source/utils.c
+SRCS	=	./source/fd.c ./source/parse.c ./source/pipex.c ./source/utils.c
 
 OBJS	=	${SRCS:.c=.o}
 
@@ -19,7 +19,8 @@ OBJS	=	${SRCS:.c=.o}
 
 NAME	=	 pipex
 
-CFLAGS	=	-Wall -Werror -Wextra -g -fsanitize=address
+#CFLAGS	=	-Wall -Werror -Wextra -g -fsanitize=address
+CFLAGS	=	 -g 
 
 
 CC	=	gcc

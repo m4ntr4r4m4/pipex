@@ -5,20 +5,23 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: ahammoud <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/10/12 01:30:36 by ahammoud          #+#    #+#             */
-/*   Updated: 2022/03/13 16:57:31 by ahammoud         ###   ########.fr       */
+/*   Created: 2022/11/14 13:19:03 by ahammoud          #+#    #+#             */
+/*   Updated: 2022/11/14 13:37:50 by ahammoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include"libft.h"
+#include "libft.h"
 
-char	*ft_strjoin(char const *s1, char const *s2)
+char	*ft_strjoin(char *s1, char *s2)
 {
 	char	*dest;
 	size_t	i;
 	size_t	j;
 
 	if (!s1)
-		return (NULL);
+	{
+		s1 = malloc(sizeof(char) * 1);
+		s1[0] = '\0';
+	}
 	dest = NULL;
 	i = ft_strlen((char *)s1);
 	j = ft_strlen((char *)s2);
@@ -31,5 +34,6 @@ char	*ft_strjoin(char const *s1, char const *s2)
 		ft_memcpy(&dest[i], s2, j);
 		dest[i + j] = '\0';
 	}
+//	free(s1);
 	return (dest);
 }

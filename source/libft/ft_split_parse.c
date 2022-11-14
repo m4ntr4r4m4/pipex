@@ -6,7 +6,7 @@
 /*   By: ahammoud <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/07 21:41:37 by ahammoud          #+#    #+#             */
-/*   Updated: 2022/11/10 21:15:53 by ahammoud         ###   ########.fr       */
+/*   Updated: 2022/11/14 12:46:44 by ahammoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include"libft.h"
@@ -49,15 +49,19 @@ static char	**cpy(char **mots, char const *s, int wc, char c)
 		len = 0;
 		while (s[i] == c)
 			i++;
-		start = i;
 		if (s[i] == '"')
-			quote++;
-		while ((s[i] != c || (quote % 2) != 0) && s[i] != '\0')
 		{
-			len++;
+			quote++;
+			i++;
+		}
+		start = i;
+		while (((s[i] != c || (quote % 2) != 0) && s[i] != '\0'))
+		{
 			i++;
 			if (s[i] == '"')
 				quote++;
+			else
+				len++;
 		}
 		mots[j] = ft_substr(s, start, len);
 		j++;

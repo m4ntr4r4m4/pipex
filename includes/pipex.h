@@ -6,7 +6,7 @@
 /*   By: ahammoud <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/07 13:08:11 by ahammoud          #+#    #+#             */
-/*   Updated: 2022/11/12 13:59:38 by ahammoud         ###   ########.fr       */
+/*   Updated: 2022/11/14 17:04:31 by ahammoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,5 +50,12 @@ typedef struct s_all {
 
 char	*check_bin(char *binary, char *bin, int ac);
 char	**path_var(char **envp);
-void	freevars(t_pip *vars);
+void	freevars(t_all *all);
+void	freetable(char **str);
+void	ft_error(void);
+void	child1(int id, t_all *all, char **envp);
+void	dupfd(t_pip *pipes, int id, int size);
+void	closefiledes(t_pip *var, int size);
+int		ft_parsing(char **av, t_all *vars, int x);
+void	leaks(void);
 #endif

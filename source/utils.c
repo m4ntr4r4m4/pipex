@@ -6,7 +6,7 @@
 /*   By: ahammoud <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/11 14:36:36 by ahammoud          #+#    #+#             */
-/*   Updated: 2022/11/10 18:07:38 by ahammoud         ###   ########.fr       */
+/*   Updated: 2022/11/14 16:57:03 by ahammoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,24 +37,40 @@ char	**path_var(char **envp)
 char	*check_bin(char *binary, char *bin, int ac)
 {
 	int		x;
+	char	*str;
 
-	if (ac == 2)
-		x = access(ft_strjoin(bin, binary), W_OK);
+	str = ft_strjoin(bin, binary);
 	if (ac == 1)
-		x = access(ft_strjoin(bin, binary), R_OK);
+		x = access(str, R_OK);
+	if (ac == 2)
+		x = access(str, W_OK);
 	if (ac == 3)
-		x = access(ft_strjoin(bin, binary), X_OK);
+		x = access(str, X_OK);
+	free(str);
 	if (x == 0)
 		return (ft_strjoin(bin, binary));
 	return (NULL);
 }
 
-//void	freevars(t_pip *vars)
-//{
-//	int	i;
-//
-//	i = 0;
-//	while (vars->pathvar[i])
-//		free(vars->pathvar[i++]);
-//	free(vars->pathvar);
-//}
+void	freetable(char **str)
+{
+	int	i;
+
+	i = 0;
+	while (str[i])
+		free(str[i++]);
+	free(str[i]);
+	free(str);
+}
+
+void	freevars(t_all *all)
+{
+	int	i;
+
+	i = -1;
+	freetable(all->pathvar);
+	free(all->pipes);
+	while (++i < (int) all->size)
+		freetable(all->cmd[i].args);
+	free(all->cmd);
+}
