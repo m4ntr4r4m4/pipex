@@ -6,7 +6,7 @@
 /*   By: ahammoud <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/07 13:08:11 by ahammoud          #+#    #+#             */
-/*   Updated: 2022/11/10 18:05:18 by ahammoud         ###   ########.fr       */
+/*   Updated: 2022/11/12 13:59:38 by ahammoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,9 @@
 # include <errno.h>
 # include <stdio.h>
 # include <string.h>
+# define FT_READ 1
+# define FT_WRITE 2
+# define FT_EXEC 3
 
 typedef struct s_pip {
 	int		fd[2];
