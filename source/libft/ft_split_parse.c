@@ -6,7 +6,7 @@
 /*   By: ahammoud <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/07 21:41:37 by ahammoud          #+#    #+#             */
-/*   Updated: 2022/11/14 12:46:44 by ahammoud         ###   ########.fr       */
+/*   Updated: 2022/11/14 17:30:46 by ahammoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include"libft.h"
@@ -33,20 +33,34 @@ static int	word_c(char *str, char c)
 	return (wc);
 }
 
+static	int	ft_tr(const char *s, int c, int quote, int *i)
+{
+	int	len;
+
+	len = 0;
+	while (((s[*i] != c || (quote % 2) != 0) && s[*i] != '\0'))
+	{
+		(*i)++;
+		if (s[*i] == '"')
+			quote++;
+		else
+			len++;
+	}
+	return (len);
+}
 
 static char	**cpy(char **mots, char const *s, int wc, char c)
 {
-	int	i;
-	int	j;
-	int	len;
-	int	start;
-	static int quote;
+	int			i;
+	int			j;
+	int			len;
+	int			start;
+	static int	quote;
 
 	i = 0;
 	j = 0;
 	while (j < wc)
 	{
-		len = 0;
 		while (s[i] == c)
 			i++;
 		if (s[i] == '"')
@@ -55,14 +69,7 @@ static char	**cpy(char **mots, char const *s, int wc, char c)
 			i++;
 		}
 		start = i;
-		while (((s[i] != c || (quote % 2) != 0) && s[i] != '\0'))
-		{
-			i++;
-			if (s[i] == '"')
-				quote++;
-			else
-				len++;
-		}
+		len = ft_tr(s, c, quote, &i);
 		mots[j] = ft_substr(s, start, len);
 		j++;
 	}

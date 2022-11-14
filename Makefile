@@ -6,7 +6,7 @@
 #    By: ahammoud <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/07 13:14:42 by ahammoud          #+#    #+#              #
-#    Updated: 2022/11/14 16:58:05 by ahammoud         ###   ########.fr        #
+#    Updated: 2022/11/14 17:35:22 by ahammoud         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,8 +19,9 @@ OBJS	=	${SRCS:.c=.o}
 
 NAME	=	 pipex
 
+CFLAGS	=	-Wall -Werror -Wextra -g
 #CFLAGS	=	-Wall -Werror -Wextra -g -fsanitize=address
-CFLAGS	=	 -g 
+#CFLAGS	=	 -g 
 
 
 CC	=	gcc
