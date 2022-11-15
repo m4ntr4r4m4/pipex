@@ -6,7 +6,7 @@
 /*   By: ahammoud <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/11 14:36:36 by ahammoud          #+#    #+#             */
-/*   Updated: 2022/11/15 16:32:58 by ahammoud         ###   ########.fr       */
+/*   Updated: 2022/11/15 16:57:09 by ahammoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,4 +75,9 @@ void	freevars(t_all *all)
 	free(all->cmd);
 	if (all->limiter)
 		unlink(all->infile);
+}
+
+void	leaks(void)
+{
+	system("leaks pipex");
 }

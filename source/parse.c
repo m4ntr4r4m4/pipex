@@ -6,7 +6,7 @@
 /*   By: ahammoud <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 16:46:12 by ahammoud          #+#    #+#             */
-/*   Updated: 2022/11/15 16:44:35 by ahammoud         ###   ########.fr       */
+/*   Updated: 2022/11/15 16:49:20 by ahammoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ void	get_cmd(char **av, t_all *all, int x)
 	all->outfile = av[i];
 }
 
-char *get_line(int fd)
+char	*get_line(int fd)
 {
 	char	*buff;
 	char	*str;
@@ -66,7 +66,7 @@ char *get_line(int fd)
 	str = malloc(sizeof(char) * 1);
 	str[0] = '\0';
 	buff[1] = '\0';
-	i =  read(fd, buff, 1);
+	i = read(fd, buff, 1);
 	if (i == -1)
 	{
 		free(buff);
@@ -77,23 +77,22 @@ char *get_line(int fd)
 		tmp = ft_strjoin(str, buff);
 		free(str);
 		str = tmp;
-		i =  read(fd, buff, 1);
+		i = read(fd, buff, 1);
 	}
 	free(buff);
-	return(str);
+	return (str);
 }
-
 
 void	ft_here_doc(t_all *all)
 {
-	int	fd;
+	int		fd;
 	char	*input;
 
 	fd = open("file.tmp", O_WRONLY | O_CREAT, 0666);
 	if (fd < 0)
 		exit(0);
 	input = get_line(0);
-	while(ft_strncmp(input, all->limiter, ft_strlen(all->limiter)))
+	while (ft_strncmp(input, all->limiter, ft_strlen(all->limiter)))
 	{
 		ft_putendl_fd(input, fd);
 		free(input);
@@ -112,12 +111,11 @@ int	ft_parsing(char **av, t_all *vars, int x)
 
 	i = -1;
 	str = NULL;
-	vars->limiter = NULL;
 	vars->cmd = malloc(sizeof(t_cmd) * x);
 	if (x - 1 == 0)
 		ft_error(1);
 	vars->pipes = malloc(sizeof(t_pip) * x - 1);
-	if (strncmp(av[0],"here_doc", ft_strlen("here_doc")) != 0)
+	if (strncmp(av[0], "here_doc", ft_strlen("here_doc")) != 0)
 	{
 		str = check_bin(av[0], "./", 1);
 		if (!str)

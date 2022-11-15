@@ -6,7 +6,7 @@
 /*   By: ahammoud <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/07 13:26:05 by ahammoud          #+#    #+#             */
-/*   Updated: 2022/11/15 16:45:08 by ahammoud         ###   ########.fr       */
+/*   Updated: 2022/11/15 16:58:40 by ahammoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,11 +42,6 @@ void	ft_error(int x)
 	exit(0);
 }
 
-void	leaks(void)
-{
-	system("leaks pipex");
-}
-
 void	ft_waitpid(t_all *all, int *pid)
 {
 	int	i;
@@ -60,6 +55,19 @@ void	ft_waitpid(t_all *all, int *pid)
 	i = -1;
 	while (++i < (int) all->size)
 		waitpid(pid[i], NULL, 0);
+}
+
+void	ft_forks(t_all *all, int *pid, char **envp)
+{
+	int	i;
+
+	i = -1;
+	while (++i < (int) all->size)
+	{
+		pid[i] = fork();
+		if (pid[i] == 0)
+			child1(i, all, envp);
+	}
 }
 
 int	main(int argc, char **argv, char **envp)
@@ -79,13 +87,7 @@ int	main(int argc, char **argv, char **envp)
 		if (pipe(all.pipes[i].fd) < 0)
 			return (0);
 	}
-	i = -1;
-	while (++i < (int) all.size)
-	{
-		pid[i] = fork();
-		if (pid[i] == 0)
-			child1(i, &all, envp);
-	}
+	ft_forks(&all, pid, envp);
 	ft_waitpid(&all, pid);
 	freevars(&all);
 	free(pid);

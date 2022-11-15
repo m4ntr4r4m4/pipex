@@ -6,7 +6,7 @@
 /*   By: ahammoud <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/07 13:08:11 by ahammoud          #+#    #+#             */
-/*   Updated: 2022/11/15 15:40:08 by ahammoud         ###   ########.fr       */
+/*   Updated: 2022/11/15 16:56:28 by ahammoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,5 +58,6 @@ void	child1(int id, t_all *all, char **envp);
 void	dupfd(t_pip *pipes, int id, int size);
 void	closefiledes(t_pip *var, int size);
 int		ft_parsing(char **av, t_all *vars, int x);
+void	ft_forks(t_all *all, int *pid, char **envp);
 void	leaks(void);
 #endif
