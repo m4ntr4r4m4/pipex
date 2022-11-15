@@ -6,7 +6,7 @@
 #    By: ahammoud <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/07 13:14:42 by ahammoud          #+#    #+#              #
-#    Updated: 2022/11/14 17:35:22 by ahammoud         ###   ########.fr        #
+#    Updated: 2022/11/15 16:10:52 by ahammoud         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,7 +28,7 @@ CC	=	gcc
 
 
 ${NAME}	:	${OBJS} 
-			cd ./source/libft/ && make
+			cd ./source/libft/ && make bonus
 			${CC} ${CFLAGS} ${OBJS} ./source/libft/libft.a -o ${NAME}
 
 all	:	${NAME}

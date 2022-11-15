@@ -6,7 +6,7 @@
 /*   By: ahammoud <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/11 14:36:36 by ahammoud          #+#    #+#             */
-/*   Updated: 2022/11/14 16:57:03 by ahammoud         ###   ########.fr       */
+/*   Updated: 2022/11/15 16:32:58 by ahammoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,4 +73,6 @@ void	freevars(t_all *all)
 	while (++i < (int) all->size)
 		freetable(all->cmd[i].args);
 	free(all->cmd);
+	if (all->limiter)
+		unlink(all->infile);
 }

@@ -6,7 +6,7 @@
 /*   By: ahammoud <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/07 13:08:11 by ahammoud          #+#    #+#             */
-/*   Updated: 2022/11/14 17:11:27 by ahammoud         ###   ########.fr       */
+/*   Updated: 2022/11/15 15:40:08 by ahammoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ typedef struct s_all {
 	char	**pathvar;
 	char	*infile;
 	char	*outfile;
+	char	*limiter;
 	t_cmd	*cmd;
 	size_t	size;
 	t_pip	*pipes;
