@@ -6,7 +6,7 @@
 /*   By: ahammoud <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/07 13:26:05 by ahammoud          #+#    #+#             */
-/*   Updated: 2022/11/15 16:14:35 by ahammoud         ###   ########.fr       */
+/*   Updated: 2022/11/15 16:45:08 by ahammoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,7 @@ int	main(int argc, char **argv, char **envp)
 	t_all	all;
 
 	i = -1;
+	all.limiter = NULL;
 	all.pathvar = path_var(envp);
 	if (ft_parsing(++argv, &all, argc - 3))
 		ft_error(1);

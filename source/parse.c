@@ -6,7 +6,7 @@
 /*   By: ahammoud <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 16:46:12 by ahammoud          #+#    #+#             */
-/*   Updated: 2022/11/15 16:32:42 by ahammoud         ###   ########.fr       */
+/*   Updated: 2022/11/15 16:44:35 by ahammoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,13 +111,13 @@ int	ft_parsing(char **av, t_all *vars, int x)
 	char	*str;
 
 	i = -1;
-	vars->limiter = NULL;
 	str = NULL;
+	vars->limiter = NULL;
 	vars->cmd = malloc(sizeof(t_cmd) * x);
 	if (x - 1 == 0)
 		ft_error(1);
 	vars->pipes = malloc(sizeof(t_pip) * x - 1);
-	if (strncmp(av[0],"here_doc", ft_strlen("here_doc")))
+	if (strncmp(av[0],"here_doc", ft_strlen("here_doc")) != 0)
 	{
 		str = check_bin(av[0], "./", 1);
 		if (!str)
